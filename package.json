@@ -1,0 +1,91 @@
+{
+  "name": "project-scaffolder",
+  "displayName": "Project Scaffolder",
+  "description": "Automate project boilerplate creation — Generate folder structures and React components via right-click context menu.",
+  "version": "1.0.0",
+  "publisher": "toskot639",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Snippets"
+  ],
+  "keywords": [
+    "scaffold",
+    "boilerplate",
+    "react",
+    "nextjs",
+    "express",
+    "component",
+    "generator",
+    "folder structure"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "projectScaffolder.generateFolderStructure",
+        "title": "Generate Folder Structure",
+        "category": "Scaffolder"
+      },
+      {
+        "command": "projectScaffolder.generateComponent",
+        "title": "Generate Component",
+        "category": "Scaffolder"
+      },
+      {
+        "command": "projectScaffolder.createReactComponent",
+        "title": "Create React Component",
+        "category": "Scaffolder"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "projectScaffolder.generateFolderStructure",
+          "when": "explorerResourceIsFolder",
+          "group": "scaffolder@1"
+        },
+        {
+          "command": "projectScaffolder.generateComponent",
+          "when": "explorerResourceIsFolder",
+          "group": "scaffolder@2"
+        },
+        {
+          "command": "projectScaffolder.createReactComponent",
+          "when": "explorerResourceIsFolder",
+          "group": "scaffolder@3"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8",
+    "@vscode/vsce": "^2.24.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/toskot/project-scaffolder"
+  },
+  "license": "MIT"
+}
