@@ -1,6 +1,6 @@
 {
-  "name": "project-scaffolder",
-  "displayName": "Project Scaffolder",
+  "name": "project-scaffolder-tk",
+  "displayName": "Project Scaffolder by Tushar Kotecha",
   "description": "Automate project boilerplate creation — Generate folder structures and React components via right-click context menu.",
   "version": "1.0.0",
   "publisher": "toskot639",
