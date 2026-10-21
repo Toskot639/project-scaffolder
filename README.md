@@ -1,8 +1,8 @@
 # Project Scaffolder
 
-> ⚡ Generate project boilerplate and React components with a single right-click.
+> ⚡ Generate project boilerplate, React, and React Native components with a single right-click.
 
-A powerful VS Code extension that automates the creation of project folder structures and React components directly from the Explorer context menu — no CLI, no copy-pasting.
+A powerful VS Code extension that automates the creation of project folder structures, React web components, and React Native mobile components & screens directly from the Explorer context menu — no CLI, no copy-pasting.
 
 ---
 
@@ -11,10 +11,11 @@ A powerful VS Code extension that automates the creation of project folder struc
 ### 📁 Generate Folder Structure
 Right-click any folder → **Generate Folder Structure**
 
-Choose from four project templates:
+Choose from five project templates:
 | Template | Includes |
 |---|---|
 | ⚛️ React App | `src/components`, `src/hooks`, `src/context`, `src/utils`, `src/services`, `src/types`, seed files |
+| 📱 React Native App | `src/components`, `src/screens`, `src/navigation`, `src/theme`, `src/hooks`, `src/services`, `App.tsx` |
 | ▲ Next.js App | `app/`, `components/`, `lib/`, `hooks/`, `utils/`, `types/`, `layout.tsx`, `page.tsx` |
 | 🚀 Node/Express API | `src/controllers`, `src/routes`, `src/middleware`, `src/models`, `src/services`, with middleware boilerplate |
 | 💚 Vue 3 App | `src/components`, `src/composables`, `src/stores`, `src/views`, `src/router` |
@@ -23,8 +24,8 @@ After selecting a template, optionally enter a **subfolder name** to scope the g
 
 ---
 
-### 🧩 Generate Component
-Right-click any folder → **Generate Component**
+### 🧩 Generate React Component
+Right-click any folder → **Generate React Component**
 
 1. Enter a component name (auto-converted to PascalCase)
 2. Choose options:
@@ -57,14 +58,66 @@ ComponentName/
 
 ---
 
+### 📱 Generate React Native Component
+Right-click any folder → **Generate React Native Component**
+
+1. Enter component name (auto-converted to PascalCase)
+2. Choose options:
+   - 🎨 Separate StyleSheet file (`.styles.ts`)
+   - 🧪 Include Test file (`@testing-library/react-native`)
+   - 🏷️ Separate Types file (`.types.ts`)
+   - 📁 Create subfolder (default: yes)
+
+**Output:**
+```
+Card/
+  Card.tsx            ← React Native component with View, Text & props
+  Card.styles.ts      ← Dedicated StyleSheet (optional)
+  Card.types.ts       ← Component TypeScript types (optional)
+  index.ts            ← Barrel export
+  Card.test.tsx       ← React Native Testing Library tests (optional)
+```
+
+---
+
+### 📱 Create React Native Component (Streamlined)
+Right-click any folder → **Create React Native Component**
+
+Fast path for mobile components. Creates:
+```
+ComponentName/
+  ComponentName.tsx
+  ComponentName.styles.ts
+  index.ts
+  ComponentName.test.tsx
+```
+
+---
+
+### 📱 Create React Native Screen
+Right-click any folder → **Create React Native Screen**
+
+Scaffolds a complete React Native screen ready for navigation:
+```
+HomeScreen/
+  HomeScreen.tsx      ← Screen component with SafeAreaView and navigation props
+  HomeScreen.styles.ts
+  index.ts
+```
+
+---
+
 ## Usage
 
 1. Open a project in VS Code
 2. Right-click any folder in the **Explorer** sidebar
 3. Select one of:
    - `Generate Folder Structure`
-   - `Generate Component`
+   - `Generate React Component`
    - `Create React Component`
+   - `Generate React Native Component`
+   - `Create React Native Component`
+   - `Create React Native Screen`
 4. Follow the prompts
 
 ---
@@ -161,8 +214,9 @@ project-scaffolder/
 ├── src/
 │   ├── extension.ts                  ← Entry point, registers commands
 │   ├── commands/
-│   │   ├── generateFolderStructure.ts ← "Generate Folder Structure" handler
-│   │   └── generateComponent.ts       ← "Generate Component" handler
+│   │   ├── generateFolderStructure.ts       ← "Generate Folder Structure" handler
+│   │   ├── generateComponent.ts             ← "Generate React Component" handler
+│   │   └── generateReactNativeComponent.ts  ← React Native component & screen handler
 │   ├── templates/
 │   │   ├── folderStructures.ts        ← Project type definitions + seed files
 │   │   └── componentTemplates.ts      ← TSX / CSS / test / story generators

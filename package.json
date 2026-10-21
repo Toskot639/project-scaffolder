@@ -1,7 +1,7 @@
 {
   "name": "project-scaffolder-tk",
-  "displayName": "Project Scaffolder by Tushar Kotecha",
-  "description": "Automate project boilerplate creation — Generate folder structures and React components via right-click context menu.",
+  "displayName": "Project Scaffolder",
+  "description": "Automate project boilerplate creation — Generate folder structures, React and React Native components & screens via right-click context menu.",
   "version": "1.0.0",
   "publisher": "toskot639",
   "icon": "images/icon.png",
@@ -16,6 +16,9 @@
     "scaffold",
     "boilerplate",
     "react",
+    "react-native",
+    "expo",
+    "mobile",
     "nextjs",
     "express",
     "component",
@@ -33,12 +36,27 @@
       },
       {
         "command": "projectScaffolder.generateComponent",
-        "title": "Generate Component",
+        "title": "Generate React Component",
         "category": "Scaffolder"
       },
       {
         "command": "projectScaffolder.createReactComponent",
         "title": "Create React Component",
+        "category": "Scaffolder"
+      },
+      {
+        "command": "projectScaffolder.generateReactNativeComponent",
+        "title": "Generate React Native Component",
+        "category": "Scaffolder"
+      },
+      {
+        "command": "projectScaffolder.createReactNativeComponent",
+        "title": "Create React Native Component",
+        "category": "Scaffolder"
+      },
+      {
+        "command": "projectScaffolder.createReactNativeScreen",
+        "title": "Create React Native Screen",
         "category": "Scaffolder"
       }
     ],
@@ -58,6 +76,21 @@
           "command": "projectScaffolder.createReactComponent",
           "when": "explorerResourceIsFolder",
           "group": "scaffolder@3"
+        },
+        {
+          "command": "projectScaffolder.generateReactNativeComponent",
+          "when": "explorerResourceIsFolder",
+          "group": "scaffolder@4"
+        },
+        {
+          "command": "projectScaffolder.createReactNativeComponent",
+          "when": "explorerResourceIsFolder",
+          "group": "scaffolder@5"
+        },
+        {
+          "command": "projectScaffolder.createReactNativeScreen",
+          "when": "explorerResourceIsFolder",
+          "group": "scaffolder@6"
         }
       ]
     }
@@ -70,7 +103,8 @@
     "lint": "eslint src",
     "test": "vscode-test",
     "package": "vsce package",
-    "publish": "vsce publish"
+    "publish": "vsce publish",
+    "publish:ovsx": "ovsx publish"
   },
   "devDependencies": {
     "@types/vscode": "^1.85.0",

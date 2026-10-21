@@ -452,6 +452,152 @@ export default router;
       { path: "src/assets/main.css", content: "/* Global styles */\n" },
     ],
   },
+
+  "react-native": {
+    label: "📱  React Native App",
+    description: "React Native mobile app with TypeScript, Navigation & Theme",
+    folders: [
+      "src/components",
+      "src/components/common",
+      "src/screens",
+      "src/navigation",
+      "src/hooks",
+      "src/context",
+      "src/services",
+      "src/utils",
+      "src/types",
+      "src/constants",
+      "src/theme",
+      "src/assets/images",
+      "src/assets/fonts",
+    ],
+    files: [
+      {
+        path: "App.tsx",
+        content: `import React from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import RootNavigator from './src/navigation/RootNavigator';
+
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <StatusBar style="auto" />
+      <RootNavigator />
+    </SafeAreaProvider>
+  );
+}
+`,
+      },
+      {
+        path: "src/screens/HomeScreen.tsx",
+        content: `import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { colors } from '../theme/colors';
+
+export default function HomeScreen() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome to React Native!</Text>
+      <Text style={styles.subtitle}>Start editing src/screens/HomeScreen.tsx</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: colors.text,
+    marginBottom: 8,
+  },
+  subtitle: {
+    fontSize: 14,
+    color: colors.muted,
+  },
+});
+`,
+      },
+      {
+        path: "src/navigation/RootNavigator.tsx",
+        content: `import React from 'react';
+import HomeScreen from '../screens/HomeScreen';
+
+// Configure your React Navigation stack or tabs here
+export default function RootNavigator() {
+  return <HomeScreen />;
+}
+`,
+      },
+      {
+        path: "src/theme/colors.ts",
+        content: `export const colors = {
+  primary: '#007AFF',
+  secondary: '#5856D6',
+  background: '#FFFFFF',
+  card: '#F2F2F7',
+  text: '#1C1C1E',
+  muted: '#8E8E93',
+  border: '#C6C6C8',
+  notification: '#FF3B30',
+};
+`,
+      },
+      {
+        path: "src/theme/index.ts",
+        content: `export * from './colors';
+`,
+      },
+      {
+        path: "src/types/index.ts",
+        content: `// Global TypeScript type definitions
+export {};
+`,
+      },
+      {
+        path: "src/hooks/index.ts",
+        content: `// Custom hooks barrel export
+export {};
+`,
+      },
+      {
+        path: "src/utils/index.ts",
+        content: `// Utility helper functions
+export {};
+`,
+      },
+      {
+        path: "src/services/api.ts",
+        content: `// API client service
+const BASE_URL = 'https://api.example.com';
+
+export async function request<T>(endpoint: string, options?: RequestInit): Promise<T> {
+  const response = await fetch(\`\${BASE_URL}\${endpoint}\`, options);
+  if (!response.ok) {
+    throw new Error(\`API request failed with status: \${response.status}\`);
+  }
+  return response.json() as Promise<T>;
+}
+`,
+      },
+      {
+        path: "src/constants/index.ts",
+        content: `export const APP_NAME = 'MyReactNativeApp';
+`,
+      },
+      {
+        path: "src/assets/images/.gitkeep",
+        content: "",
+      },
+    ],
+  },
 };
 
 export const TEMPLATE_LABELS = Object.entries(PROJECT_TEMPLATES).map(

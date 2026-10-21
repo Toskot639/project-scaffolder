@@ -4,6 +4,11 @@ import {
   generateComponentHandler,
 } from "./commands/generateComponent";
 import { generateFolderStructureHandler } from "./commands/generateFolderStructure";
+import {
+  createReactNativeComponentHandler,
+  createReactNativeScreenHandler,
+  generateReactNativeComponentHandler,
+} from "./commands/generateReactNativeComponent";
 
 /**
  * Called when VS Code activates the extension.
@@ -19,7 +24,8 @@ export function activate(context: vscode.ExtensionContext): void {
       await generateFolderStructureHandler(contextUri);
     }
   );
-  // ── Command 2: Generate Component (full options) ──────────────────────────
+
+  // ── Command 2: Generate React Component (full options) ────────────────────
   const generateComponentCmd = vscode.commands.registerCommand(
     "projectScaffolder.generateComponent",
     async (contextUri: vscode.Uri | undefined) => {
@@ -35,11 +41,38 @@ export function activate(context: vscode.ExtensionContext): void {
     }
   );
 
+  // ── Command 4: Generate React Native Component (with options) ─────────────
+  const generateReactNativeComponentCmd = vscode.commands.registerCommand(
+    "projectScaffolder.generateReactNativeComponent",
+    async (contextUri: vscode.Uri | undefined) => {
+      await generateReactNativeComponentHandler(contextUri);
+    }
+  );
+
+  // ── Command 5: Create React Native Component (streamlined) ────────────────
+  const createReactNativeComponentCmd = vscode.commands.registerCommand(
+    "projectScaffolder.createReactNativeComponent",
+    async (contextUri: vscode.Uri | undefined) => {
+      await createReactNativeComponentHandler(contextUri);
+    }
+  );
+
+  // ── Command 6: Create React Native Screen ─────────────────────────────────
+  const createReactNativeScreenCmd = vscode.commands.registerCommand(
+    "projectScaffolder.createReactNativeScreen",
+    async (contextUri: vscode.Uri | undefined) => {
+      await createReactNativeScreenHandler(contextUri);
+    }
+  );
+
   // Register all disposables
   context.subscriptions.push(
     generateFolderStructureCmd,
     generateComponentCmd,
-    createReactComponentCmd
+    createReactComponentCmd,
+    generateReactNativeComponentCmd,
+    createReactNativeComponentCmd,
+    createReactNativeScreenCmd
   );
 }
 
