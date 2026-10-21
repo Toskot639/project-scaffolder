@@ -1,4 +1,4 @@
-# Project Scaffolder
+# Project & Component Scaffolder
 
 > ⚡ Generate project boilerplate, React, and React Native components with a single right-click.
 
