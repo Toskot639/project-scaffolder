@@ -2,6 +2,11 @@
 
 All notable changes to **Project Scaffolder** will be documented here.
 
+## [1.1.1] – 2026-10-23
+
+### Fixed
+- Updated extension metadata and republished immutable version for Open VSX registry.
+
 ## [1.1.0] – 2026-10-21
 
 ### Added

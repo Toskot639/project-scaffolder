@@ -2,7 +2,7 @@
   "name": "project-scaffolder-tk",
   "displayName": "Project & Component Scaffolder",
   "description": "Automate project boilerplate creation — Generate folder structures, React and React Native components & screens via right-click context menu.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "publisher": "toskot639",
   "icon": "images/icon.png",
   "engines": {
